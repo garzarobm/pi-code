@@ -16,11 +16,10 @@ BAT_GPIO = 16
 LOW_BAT_GPIO= 18
 LED_GPIO = 20
 
-
-
+usb_power = True
+global p
 p = subprocess.Popen(command, shell=True)
 
-global program_running 
 
 
 def signal_handler(sig, frame):
@@ -29,7 +28,6 @@ def signal_handler(sig, frame):
 
 def usb_power_off(channel):
     global usb_power 
-    
     usb_power = False
     pid = p.pid
     os.kill(pid, signal.SIGINT)
@@ -52,18 +50,20 @@ if __name__ == '__main__':
             callback=usb_power_off, bouncetime=200)
     
     signal.signal(signal.SIGINT, signal_handler)
-#os.system('record')
     
 
 
-while True:
+while usb_power:
     poll = p.poll()
     if poll is None:
-        print("subprocess")
-        sleep(5)
+        #process is running
+        continue
             
     else:
-        p = subprocess.Popen(command, shell=True)
+        #p = subprocess.Popen(command, shell=True)
+        continue
+    sleep(30)
+        
             
 
 
@@ -71,7 +71,7 @@ wifi_process  = subprocess.Popen(command, shell=True)
 wifi_command = "python /home/pi/pi-code/main/upload_files.py"
 while True:
     poll = wifi_process.poll()
-    if poll is None:
+    if poll == 1:
         print("subprocess")
         sleep(5)
             
