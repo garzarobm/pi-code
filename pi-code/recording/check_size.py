@@ -15,14 +15,4 @@ total_bytes = statvfs.f_frsize * statvfs.f_blocks
 
 free_bytes_percentage = ((1.0 * free_bytes) / total_bytes) * 100
 
-if free_bytes_percentage < PERCENTAGE_THRESHOLD:
-    recordings_path = os.path.join(ROOT_PATH, RECORDINGS_PATH,UPLOADED_RECORDINGS_PATH)
-    
-    recordings = []
-    for dir_name in os.listdir(recordings_path):
-        recording_path = os.path.join(recordings_path, dir_name)
-        recordings.append((recording_path, os.stat(recording_path).st_mtime))
-
-    recordings.sort(key=lambda tup: tup[1])
-
-    shutil.rmtree(recordings[0][0])
+print (free_bytes_percentage)
