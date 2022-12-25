@@ -7,7 +7,7 @@ import os
 ROOT_PATH = os.getenv("ROOT_PATH", "/home/pi")
 RECORDINGS_PATH = os.getenv("RECORDINGS_PATH", "recordings")
 DATE_FMT = "%Y_%m_%d_%H_%M_%S"
-SEGMENT_TIME = 60
+SEGMENT_TIME = 15 
 ENCODING = os.getenv("ENCODING", "copy")
 
 #os.mkdir(RECORDINGS_PATH)
