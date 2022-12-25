@@ -4,6 +4,8 @@
                                                                    
 
 from record import *
+from time import sleep
+import subprocess
 
 import signal                   
 import sys
@@ -16,9 +18,9 @@ LED_GPIO = 20
 
 
 
+p = subprocess.Popen(command, shell=True)
 
-
-global 
+global program_running 
 
 
 def signal_handler(sig, frame):
@@ -26,12 +28,11 @@ def signal_handler(sig, frame):
     sys.exit(0)
 
 def usb_power_off(channel):
-    pid = p.pid
-    os.kill(pid, signal.SIGINT)
     global usb_power 
+    
     usb_power = False
     pid = p.pid
-                     os.kill(pid, signal.SIGINT)
+    os.kill(pid, signal.SIGINT)
 def low_bat(channel):
     global low_bat
     low_bat_power = True
@@ -55,12 +56,24 @@ if __name__ == '__main__':
     
 
 
-    while True:
-        if poll = p.poll()
-            if poll is None:
-
-                sleep(5)
-        
-            else:
-                p = subprocess.Popen(["python /home/pi/pi-code/recording/record.py"], stdout=devnull, shell=False)
+while True:
+    poll = p.poll()
+    if poll is None:
+        print("subprocess")
+        sleep(5)
             
+    else:
+        p = subprocess.Popen(command, shell=True)
+            
+
+
+wifi_process  = subprocess.Popen(command, shell=True)
+wifi_command = "python /home/pi/pi-code/main/upload_files.py"
+while True:
+    poll = wifi_process.poll()
+    if poll is None:
+        print("subprocess")
+        sleep(5)
+            
+    else:
+        wifi_process = subprocess.Popen(wifi_command, shell=True)

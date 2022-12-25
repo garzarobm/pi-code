@@ -1,0 +1,5 @@
+username="garzarobm"
+password="Lordking1!"
+piDash1="DashCam/piDash1/"
+piDash0="DashCam/piDash0/"
+publicLink="https://drive.finishyourproduct.com/nextcloud/index.php/s/tHiNN9cMJHnLJ8T"

@@ -4,7 +4,7 @@
                                                                    
 
 from record import *
-
+import subprocess
 import signal                   
 import sys
 import time
@@ -16,9 +16,9 @@ LED_GPIO = 20
 
 
 
+p = subprocess.Popen(command, shell=True)
 
-
-global 
+program_running = True
 
 
 def signal_handler(sig, frame):
@@ -26,12 +26,11 @@ def signal_handler(sig, frame):
     sys.exit(0)
 
 def usb_power_off(channel):
-    pid = p.pid
-    os.kill(pid, signal.SIGINT)
+    global p
     global usb_power 
     usb_power = False
     pid = p.pid
-                     os.kill(pid, signal.SIGINT)
+    os.kill(pid, signal.SIGINT)
 def low_bat(channel):
     global low_bat
     low_bat_power = True
@@ -55,12 +54,24 @@ if __name__ == '__main__':
     
 
 
-    while True:
-        if poll = p.poll()
-            if poll is None:
+while True:
+    if usb_power == False:
+        print("USB POWER OFF!")
+        break
 
-                sleep(5)
-        
-            else:
-                p = subprocess.Popen(["python /home/pi/pi-code/recording/record.py"], stdout=devnull, shell=False)
+    else
+    poll = p.poll()
+    if poll is None:
+        print("subprocess")
+        sleep(5)
             
+    else:
+        p = subprocess.Popen(command, shell=True)
+
+wifiProcess = 
+WifiPath = "/home/pi/pi-code/nextcloud/
+
+#sleep mode & try wifi
+while True:
+    if
+    
