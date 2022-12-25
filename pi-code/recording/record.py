@@ -10,7 +10,7 @@ DATE_FMT = "%Y_%m_%d_%H_%M_%S"
 SEGMENT_TIME = 30
 ENCODING = os.getenv("ENCODING", "copy")
 
-os.mkdir(RECORDINGS_PATH)
+#os.mkdir(RECORDINGS_PATH)
 
 new_dir = datetime.datetime.now().strftime(DATE_FMT)
 recording_path = os.path.join(ROOT_PATH, RECORDINGS_PATH, new_dir)
