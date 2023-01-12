@@ -1,0 +1,32 @@
+#
+# Uses 'hostname --all-fqdns' to confirm that both: IP address[es] assigned, and DNS operational
+#
+
+[Unit]
+Description=Wait for Network to be Online
+Documentation=man:systemd.service(5) man:systemd.special(7)
+Conflicts=shutdown.target
+After=network.target
+Before=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart= \
+    /bin/bash -c ' \
+    if [ -e /etc/systemd/system/dhcpcd.service.d/wait.conf ]; \
+    then \
+        echo Wait for Network: enabled; \
+        while [ -z $(hostname --all-fqdns) ]; \
+        do \
+            sleep 1; \
+        done; \
+    else \
+        echo Wait for Network: disabled; \
+        echo found wifi!; \
+        /bin/bash /home/pi/Desktop/pi-code/piZero/upload.sh; \
+        exit 0; \
+    fi'
+TimeoutStartSec=1min 30s
+
+[Install]
+WantedBy=network-online.target
