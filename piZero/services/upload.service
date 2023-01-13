@@ -23,7 +23,7 @@ ExecStart= \
     else \
         echo Wait for Network: disabled; \
         echo found wifi!; \
-        /bin/bash /home/pi/Desktop/pi-code/piZero/upload_files.sh; \
+        #/bin/bash /home/pi/Desktop/pi-code/piZero/upload_files.sh; \
         exit 0; \
     fi'
 TimeoutStartSec=1min 30s
