@@ -52,7 +52,7 @@ for file_info in recordings:
     file_name= str(file_info[0]).split("/",-1)[-1]
     file_ending=file_name.split('.', -1)[-1]
 
-    print("looking into " + file_name + " at "+ local_file_path)
+    print("looking into " + file_name + " with file_ending " + file_ending + " at "+ local_file_path)
     if file_ending == ".flv":
         print("file_name: " + file_name)
         cloud_file_path = piDash0_USBPath + "/" + str(file_name)
@@ -61,17 +61,18 @@ for file_info in recordings:
 
         #uploading file to cloud
         nc.put_file(cloud_file_path, local_file_path)
-        print("placed " + local_file_path + " in cloud") 
+        print("placed " + local_file_path + " in cloud")
+        #place uploaded file in created directory
+        #os.mkdir(local_finished_dir_path)
+        #print("created dir " + local_finished_dir_path)
+
+        #moving local file to uploaded folder once processed
+        subprocess.call(["mv", local_file_path, local_finished_dir_path])
+        print("moved " + local_file_path + " to " + local_finished_dir_path)
     else:
-        print("skipping file " + local_file_path)
+        print("skipping file/folder " + file_name +   " with file_ending: " + local_file_path  + "\n\n\n")
 
-    #place uploaded file in created directory
-    #os.mkdir(local_finished_dir_path)
-    #print("created dir " + local_finished_dir_path)
-
-    #moving local file to uploaded folder once processed
-    subprocess.call(["mv", local_file_path, local_finished_dir_path])
-    print("moved " + local_file_path + " to " + local_finished_dir_path)
+   
     '''
     for file_name in os.listdir(recordingFolder[0]):
         #cloud_path = os.path.join(piDash0_USBPath,recordingFolder[0],file_name)
