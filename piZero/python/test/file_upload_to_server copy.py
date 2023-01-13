@@ -6,7 +6,7 @@ nc.login(piDash0_username, piDash0_pass)
 
 
 
-nc.put_file(piDash0_localPath + '/test.txt', 'test.txt')
+nc.put_file(piDash0_USBPath + '/test.txt', 'test.txt')
 
 #link_info = nc.share_file_with_link(piDash0_localPath + '/test.txt')
 
