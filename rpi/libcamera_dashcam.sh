@@ -1,7 +1,7 @@
 #!/bin/bash
-export folder_path="/home/pi/Desktop/Videos/recordings"
-export log_file_path="/home/pi/Desktop/Videos/recordings/dashcam.log"
-export video_file_path="/home/pi/Desktop/Videos/recordings"
+export folder_path="/home/pi/recordings"
+export log_file_path="/home/pi/recordings/dashcam.log"
+export video_file_path="/home/pi/recordings"
 
 
 # set variable form the date 
@@ -30,4 +30,4 @@ fi
 echo "Started video at: $when" >> $video_file_path
 
 # record at 1024x760 with a Desktop preview window of 640x480, pipe to ffmpeg and output dashcam.flv 
-raspivid -t 0 -w 1024 -h 760 -fps 25 -b 5000000 -p 0,0.640,480 -vf -o - | ffmpeg -i - -vcodec copy -an -f flv -r 25 -pix_fmt yuv420p $video_file_path -y
+libcamera-vid -t 0 --frames 25 -b 5000000 -p 0,0.640,480 -vf -o - | ffmpeg -i - -vcodec copy -an -f flv -r 25 -pix_fmt yuv420p $video_file_path -y
