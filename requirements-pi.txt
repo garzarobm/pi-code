@@ -1,0 +1,10 @@
+# Raspberry Pi hardware extras — install ON THE PI only (these fail or are
+# useless on a desktop).
+#
+#   pip install -r requirements.txt -r requirements-pi.txt
+#
+# Note: picamera2 is best installed via apt on Raspberry Pi OS:
+#   sudo apt install -y python3-picamera2
+
+-r requirements.txt
+RPi.GPIO               # rpi/pi4/GPIO/*

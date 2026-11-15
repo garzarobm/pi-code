@@ -1,0 +1,6 @@
+# Machine-learning extras for machine-learning/run.py.
+# tensorflow is large; on a Pi prefer tflite-runtime instead:
+#   pip install tflite-runtime
+
+-r requirements.txt
+tensorflow

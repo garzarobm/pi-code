@@ -1,0 +1,11 @@
+# Core dependencies used across this repo (upload scripts, webdav, recording).
+# Install inside a virtualenv — see "Python setup (virtualenv)" in README.md.
+#
+# Pi-only hardware libs:  requirements-pi.txt
+# Machine learning extras: requirements-ml.txt
+
+numpy
+opencv-python          # cv2 — rpi/pi4/recording, machine-learning
+easywebdav             # rpi/python/upload_files.py, rpi/pi4/main
+webdavclient3          # webdav/run_webdav3.py (import webdav3)
+pyncclient             # rpi/pi4/nextcloud_client (import nextcloud_client)

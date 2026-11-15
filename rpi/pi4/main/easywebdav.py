@@ -1,6 +1,5 @@
 import os
 import easywebdav
-from wallhaven.api import Wallhaven
 import tempfile
 # Settings Webdav
 
