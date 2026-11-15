@@ -43,7 +43,18 @@ A full pinned freeze from a working Pi 4 image lives at
 ## Credentials
 
 No passwords live in this repo — the upload scripts read them from
-environment variables. Set the ones you need before running
+environment variables. The quickest way to set everything up is the
+sample file:
+
+```bash
+cp .env.example .env     # then edit .env with real values
+set -a; source .env; set +a
+```
+
+(`.env` is gitignored, so real credentials never get committed. For a
+systemd service, point at it with `EnvironmentFile=/path/to/.env`.)
+
+Or set just the ones you need by hand
 (e.g. in `~/.profile`, or an `Environment=` line in a systemd service):
 
 ```bash
