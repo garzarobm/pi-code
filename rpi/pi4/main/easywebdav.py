@@ -1,11 +1,14 @@
 import os
 import easywebdav
-from wallhaven.api import Wallhaven
 import tempfile
-# Settings Webdav
+# Settings Webdav — credentials come from the environment, see README
+# (export WEBDAV_HOST, WEBDAV_USER, WEBDAV_PASSWORD)
 
 
-webdav = easywebdav.connect('webdav.robjects.me', username='homeconnections', password='7DhL#*/$', protocol='https', port=443,
+webdav = easywebdav.connect(os.environ.get('WEBDAV_HOST', 'webdav.example.com'),
+                            username=os.environ['WEBDAV_USER'],
+                            password=os.environ['WEBDAV_PASSWORD'],
+                            protocol='https', port=443,
                             verify_ssl=True)
 
 #webdav.cd(Wallhaven)
