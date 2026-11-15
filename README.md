@@ -40,6 +40,33 @@ Reactivate later with `source .venv/bin/activate`; leave with `deactivate`.
 A full pinned freeze from a working Pi 4 image lives at
 `rpi/pi4/recording/requirements.txt` if you need exact versions.
 
+## Credentials
+
+No passwords live in this repo — the upload scripts read them from
+environment variables. Set the ones you need before running
+(e.g. in `~/.profile`, or an `Environment=` line in a systemd service):
+
+```bash
+# Nextcloud (rpi/pi4/main/upload_files.py, rpi/pi4/nextcloud_client/)
+export NEXTCLOUD_USER="youruser"
+export NEXTCLOUD_PASSWORD="yourpassword"
+export NEXTCLOUD_PUBLIC_LINK="https://your-server/nextcloud/index.php/s/XXXXXXXX"
+```
+
+```bash
+# easywebdav (rpi/pi4/main/easywebdav.py)
+export WEBDAV_HOST="webdav.your-server.com"
+export WEBDAV_USER="youruser"
+export WEBDAV_PASSWORD="yourpassword"
+```
+
+```bash
+# webdavclient3 (webdav/run_webdav3.py)
+export WEBDAV_HOSTNAME="https://your-server/nextcloud/remote.php/dav/files/youruser/"
+export WEBDAV_LOGIN="youruser"
+export WEBDAV_PASSWORD="yourpassword"
+```
+
 ## Dependencies
 a.ffmpgeg
 I. To install ffmpeg

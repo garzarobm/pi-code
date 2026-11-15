@@ -42,8 +42,8 @@ recordings.sort(key=lambda tup: tup[1])
 
 ####PING SERVERS
 #webdav
-#webdav = easywebdav.connect('webdav.robjects.me', username='homeconnections', password='7DhL#*/$', protocol='https', port=443,
-                            verify_ssl=True)
+#webdav = easywebdav.connect(os.environ['WEBDAV_HOST'], username=os.environ['WEBDAV_USER'], password=os.environ['WEBDAV_PASSWORD'], protocol='https', port=443,
+#                            verify_ssl=True)
 
 #nextcloud login
 #nc = nextcloud_client.Client('http://drive.finishyourproduct.com/nextcloud')
